@@ -1,211 +1,68 @@
-// // if the database is empty on server start, create some sample data.
+// if the database is empty on server start, create some sample data.
+Meteor.startup(function () {
 
-// if (Meteor.isServer) {
-//   Meteor.startup(function () {
-//     // code to run on server at startup
+  if (Meteor.users.find({}).count() === 0) {
+    var data = [
+      {
+        _id: 1,
+        createdAt: (new Date()),
+        profile: {
+          name: 'Joe'
+        }
+      },
+      {
+        _id: 2,
+        createdAt: (new Date()),
+        profile: {
+          name: 'Nicole'
+        }
+      },
+      {
+        _id: 3,
+        createdAt: (new Date()),
+        profile: {
+          name: 'Josh'
+        }
+      }
+    ];
 
-//     // Only add stores and products if no stores already exist
-//     if (Stores.find({}).count() === 0) {
+    // for (var i=0; i<data.length; ++i) {
+    //   Meteor.loginWithUWaterlooId(data[i]._id);
+    // };
+  }
 
-//       // First let's add some stores
-//       var storeData = [
-//         {
-//           username: "timmiesSLC",
-//           name: "Tim Hortons",
-//           location: "SLC"
-//         },
-//         {
-//           username: "timmiesDC",
-//           name: "Tim Hortons",
-//           location: "DC"
-//         },
-//         {
-//           username: "thebucksyo",
-//           name: "Starbucks",
-//           location: "King and University"
-//         }
-//       ]
-//       for(var i=0; i < storeData.length; ++i) {
-//         Stores.insert(storeData[i]);
-//       }
+  if (FedsClubs.find({}).count() === 0) {
+    var clubData = [
+      {
+      	createdAt: (new Date()),
+        clubName: "Glow",
+        members: ["1", "9xJrshnTJ9ADMwmiR"],
+        clubDescription: "GLOW is the oldest queer student organization in Canada. Run entirely by dedicated student volunteers, it offers a wide variety of discussion groups, social events, advocacy opportunities, awareness campaigns, resources, and information. Come out and help GLOW promote a healthy attitude towards all sexual orientations and gender identities. If you need someone to talk to, visit the Centre for peer support mentoring.",
+        clubCategory: "Social",
+        clubTag: ["Gay", "Lesbian", "Sexual Orientation"]
+      },
+      {
+      	createdAt: (new Date()),
+        clubName: "Tea Culture Club",
+        members: ["2", "9xJrshnTJ9ADMwmiR", "3"],
+        clubDescription: "The Tea Culture Club serves to bring together those that enjoy a cup (or two... or three) of tea. Our purpose is to drink tea, and promote tea culture. Every meeting will revolve around exploring the nuances of tea, and as well, provide an environment that allows a moment of zen within the chaos that is university.",
+        clubCategory: "Social",
+        clubTag: ["Tea", "Culture", "Zen"]
+      },
+      {
+      	createdAt: (new Date()),
+        clubName: "Waterloo Orientation - Science",
+        members: ["1", "2", "3"],
+        clubDescription: "This is the University of Waterloo Science Orientation Group for the 2013 year. This will be a place for Science leaders to communicate, gain information and discuss during the summer and up to the week of orientation as well as after.",
+        clubCategory: "Science",
+        clubTag: ["Frosh", "Science", "Orientation week"]
+      }
+    ];
 
-//       // Now let's add some products
-//       var productData = [
-//         {
-//           item: "Coffee",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "SLC"
-//           })._id
-//         },
-//         {
-//           item: "Peppermint Tea",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "SLC"
-//           })._id
-//         }, 
-//         {
-//           item: "Peppermint Mocha",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "SLC"
-//           })._id
-//         },
-//         {
-//           item: "Vanilla Latte",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "SLC"
-//           })._id
-//         },
-//         {
-//           item: "White Chocolate Frappuccino",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "SLC"
-//           })._id
-//         },
-//         {
-//           item: "Coffee",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "DC"
-//           })._id
-//         },
-//         {
-//           item: "Earl Gray Tea",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "DC"
-//           })._id
-//         },
-//         {
-//           item: "Chai Tea",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "DC"
-//           })._id
-//         },
-//         {
-//           item: "Orange Mocha Frappuccino!",
-//           sizes: ["Small","Medium","Large","XLarge"],
-//           store_id: Stores.findOne({
-//             location: "King and University"
-//           })._id
-//         }
-//       ]
-//       for (var i=0; i < productData.length; ++i) {
-//         Products.insert(productData[i]);
-//       }
+    for (var i=0; i<clubData.length; ++i) {
+      FedsClubs.insert(clubData[i]);
+    };
 
-//       // Finally let's add some orders
-//       var orderData = [
-//         {
-//           status: "requesting",
-//           store_id: Stores.findOne({
-//             location: "SLC"
-//           })._id,
-//           time_of_order: new Date().getTime(),
-//           time_of_pickup: "14:25",
-//           total_amount: 1.25,
-//           user_id: "FAKEUSER",
-//           items: [
-//             {
-//               product: Products.findOne({
-//                 store_id: Stores.findOne({
-//                   location: "SLC"
-//                 })._id,
-//                 item: "Peppermint Mocha"
-//               })._id,
-//               size: "Medium",
-//               quantity: 2
-//             },
-//             {
-//               product: Products.findOne({
-//                 store_id: Stores.findOne({
-//                   location: "SLC"
-//                 })._id,
-//                 item: "Peppermint Tea"
-//               })._id,
-//               size: "Large",
-//               quantity: 1
-//             }
-//           ]
-//         },
-//         {
-//           status: "requesting",
-//           store_id: Stores.findOne({
-//             location: "SLC"
-//           })._id,
-//           time_of_order: new Date().getTime(),
-//           time_of_pickup: "14:30",
-//           total_amount: 13.75,
-//           user_id: "FAKEUSER",
-//           items: [
-//             {
-//               product: Products.findOne({
-//                 store_id: Stores.findOne({
-//                   location: "SLC"
-//                 })._id,
-//                 item: "Peppermint Mocha"
-//               })._id,
-//               size: "Small",
-//               quantity: 3
-//             }
-//           ]
-//         },
-//         {
-//           status: "requesting",
-//           store_id: Stores.findOne({
-//             location: "DC"
-//           })._id,
-//           time_of_order: new Date().getTime(),
-//           time_of_pickup: "15:45",
-//           total_amount: 1.25,
-//           user_id: "FAKEUSER",
-//           items: [
-//             {
-//               product: Products.findOne({
-//                 store_id: Stores.findOne({
-//                   location: "DC"
-//                 })._id,
-//                 item: "Coffee"
-//               })._id,
-//               size: "XLarge",
-//               quantity: 1
-//             }
-//           ]
-//         }
-//       ]
+  }
 
-//       for (var i=0; i<orderData.length; ++i) {
-//         Orders.insert(orderData[i]);
-//       };
-
-//     }
-
-//     // Add all the possible time options
-//     // if they haven't been added yet
-//     if (Order_Times.find({}).count() === 0) {
-//       var hours = ['00','01','02','03','04','05','06','07','08','09','10','11','12',
-//                     '13','14','15','16','17','18','19','20','21','22','23'];
-//       var minutes = ['00','05','10','15','20','25','30','35','40','45','50','55'];
-
-//       var newTime;
-//       for (var i=0; i<hours.length; ++i) {
-//         for (var j=0; j<minutes.length; ++j) {
-//           newTime = {
-//             label: hours[i]+':'+minutes[j],
-//             numMinutes: ((parseInt(hours[i])*60) + parseInt(minutes[j]))
-//           }
-
-//           Order_Times.insert(newTime);
-//         }
-//       }
-
-//     }
-
-
-//   });
-// }
+});
