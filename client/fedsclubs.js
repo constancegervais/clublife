@@ -12,5 +12,14 @@ if (Meteor.isClient) {
   });
 }
 
+Meteor.loginWithUWaterlooId = function(uWaterlooId, callback) {
+  //create a login request with admin: true, so our loginHandler can handle this request
+  var loginRequest = {uWaterlooId: uWaterlooId};
 
+  //send the login request
+  Accounts.callLoginMethod({
+    methodArguments: [loginRequest],
+    userCallback: callback
+  });
+};
 
