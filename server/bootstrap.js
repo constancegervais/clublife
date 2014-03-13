@@ -1,35 +1,35 @@
 // if the database is empty on server start, create some sample data.
 Meteor.startup(function () {
 
-  if (Meteor.users.find({}).count() === 0) {
-    var data = [
-      {
-        _id: 1,
-        createdAt: (new Date()),
-        profile: {
-          name: 'Joe'
-        }
-      },
-      {
-        _id: 2,
-        createdAt: (new Date()),
-        profile: {
-          name: 'Nicole'
-        }
-      },
-      {
-        _id: 3,
-        createdAt: (new Date()),
-        profile: {
-          name: 'Josh'
-        }
-      }
-    ];
+  // if (Meteor.users.find({}).count() === 0) {
+  //   var data = [
+  //     {
+  //       _id: 1,
+  //       createdAt: (new Date()),
+  //       profile: {
+  //         name: 'Joe'
+  //       }
+  //     },
+  //     {
+  //       _id: 2,
+  //       createdAt: (new Date()),
+  //       profile: {
+  //         name: 'Nicole'
+  //       }
+  //     },
+  //     {
+  //       _id: 3,
+  //       createdAt: (new Date()),
+  //       profile: {
+  //         name: 'Josh'
+  //       }
+  //     }
+  //   ];
 
-    // for (var i=0; i<data.length; ++i) {
-    //   Meteor.loginWithUWaterlooId(data[i]._id);
-    // };
-  }
+  //   for (var i=0; i<data.length; ++i) {
+  //     Meteor.loginWithUWaterlooId(data[i]._id);
+  //   };
+  // }
 
   if (FedsClubs.find({}).count() === 0) {
     var clubData = [

@@ -1,0 +1,57 @@
+Attributes:
+
+Club_id: "SyNsF3FdBWRF3BeA5"
+clubCategory: "Social"
+clubDescription: "..."
+clubName: "Glow"
+clubUserName: "...."
+clubPassword: "...."
+clubMeeting: Array [2]
+	clubMeetTime:
+	clubMeetLocation:
+clubTag: Array[3]
+	0: "Gay"
+	1: "Lesbian"
+	2: "Sexual Orientation"
+createdAt: Tue Feb 18 2014 17:58:34 GMT-0500 (EST)
+members: Array[2]
+	0: "1"
+	1: "9xJrshnTJ9ADMwmiR"
+Events: Array[x]
+	EventID: 
+	EventDate:
+	EventLocation:
+	EventDescription
+ClubCal: "link"
+MembersPersonallity: Array[x]
+	!!!!!!!! Please Fill out !!!!!!!!!
+
+
+UserID: "s9Ww8N8taYEgwtfvy"
+profile: Object
+	name: "Constance Gervais"
+	photo: facebook profile photo link
+	friends : Array [x]
+		Name: ...
+		ID: ...
+	memberships: Array [x]
+		clubID:
+	PersonallityTest: Array[x]
+		!!!!! Please Fill out !!!!!!!
+Services: Object
+	Facebook: Object
+		accessToken: ".."
+		email: "constance.gervais@gmail.com"
+		expiresAt: 1398993437401
+		first_name: "Constance"
+		gender: "female"
+		id: "555810647"
+		last_name: "Gervais"
+		link: "https://www.facebook.com/cwgervai"
+		locale: "en_US"
+		name: "Constance Gervais"
+		username: "cwgervai"
+
+Session: enum {user, club}
+SessionUser: UserID
+SessionClub: ClubID
