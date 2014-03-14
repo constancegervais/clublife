@@ -12,6 +12,15 @@ if (Meteor.isClient) {
   });
 }
 
+
+Template.profile_pic.profile_pic = function() {
+  if (Meteor.user()) {
+    var picture = Meteor.user().profile.picture;
+
+    if (!picture) return '';
+    return picture;
+  }
+}
 // Meteor.loginWithUWaterlooId = function(uWaterlooId, callback) {
 //   //create a login request with admin: true, so our loginHandler can handle this request
 //   var loginRequest = {uWaterlooId: uWaterlooId};

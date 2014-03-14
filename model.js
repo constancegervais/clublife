@@ -1,6 +1,8 @@
 ////////// Shared code (client and server) //////////
 
 FedsClubs = new Meteor.Collection('fedsClubs');
+MatchingUser = new Meteor.Collection('matchingUser');
+ConstanceFriends = new Meteor.Collection('constanceFriends'); 
 
 Meteor.methods({
   createClub: function (clubName, clubDescription, clubCategory, clubTag) {
