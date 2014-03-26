@@ -3,6 +3,8 @@
 FedsClubs = new Meteor.Collection('fedsClubs');
 MatchingUser = new Meteor.Collection('matchingUser');
 ConstanceFriends = new Meteor.Collection('constanceFriends'); 
+TestPeople = new Meteor.Collection('testuser');
+
 
 Meteor.methods({
   createClub: function (clubName, clubDescription, clubCategory, clubTag) {
@@ -18,7 +20,8 @@ Meteor.methods({
         members: [this.userId],
         clubDescription: clubDescription,
         clubCategory: clubCategory,
-        clubTag: clubTag
+        clubTag: clubTag,
+        PersonalityTest: PersonalityTest
       })
     }
   },

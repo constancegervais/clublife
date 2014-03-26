@@ -9,9 +9,10 @@ insecure
 preserve-inputs
 accounts-ui
 accounts-facebook
-accounts-password
 npm
 bootstrap
 router
 service-configuration
 accounts-base
+fullcalendar
+jquery

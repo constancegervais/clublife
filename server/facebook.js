@@ -15,15 +15,51 @@ if (Meteor.isServer) {
     }),
 
     Accounts.onCreateUser(function(options, user) {
-    if (options.profile) {
-        options.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture?width=300&height=300";
-        user.profile = options.profile;
-    }
-    return user;
-});
+        if (options.profile) {
+            options.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture?width=300&height=300";
+            user.profile = options.profile;
+        };
 
-    }
-  );
+        if(options.profile){
+            // FFriends = new Meteor.Collection('fFriends');
+            var fb = new Facebook(user.services.facebook.accessToken);
+            var data = fb.getFriendsData();
+
+            // data.data.forEach(function(friend){
+            //     console.log(friend);
+            // })
+
+            user.profile.friends = data.data;
+
+        };
+        return user;
+    });
+
+    Accounts.onLogin(function(options, user) {
+        if(options.profile){
+
+            var friendUsers = new Array();
+
+            user.profile.friends.forEach(function(friend){
+                var exists = Users.findOne({
+                    services:{ 
+                        facebook: {
+                            id: friend.id
+                        }
+                    }
+                });
+                
+                if(exists){
+                    friendUsers.push(exists);
+                };
+            });
+
+            user.profile.friendUsers = friendUsers;
+        };
+        return user;
+    });
+
+  });
 }
 
 // Accounts.onCreateUser(function(options, user) {
@@ -74,11 +110,10 @@ Meteor.methods({
     getFriendsData: function() { 
     var fb = new Facebook(Meteor.user().services.facebook.accessToken);
     var data = fb.getFriendsData();
-    console.log("function");
 
-    data.data.forEach(function(friend){
-        ConstanceFriends.insert(friend);
-    });	
+    // data.data.forEach(function(friend){
+    //     ConstanceFriends.insert(friend);
+    // });	
 
 	}
 });
