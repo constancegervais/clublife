@@ -16,3 +16,5 @@ service-configuration
 accounts-base
 fullcalendar
 jquery
+underscore
+backbone
