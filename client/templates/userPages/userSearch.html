@@ -1,0 +1,20 @@
+<template name="userSearch">
+  {{> userMenu}}
+  <div id="search-bar-container">
+    <input type="text" id="search" placeholder="Club Name">
+    <input type="button" class="search-bar" value="Search">
+  </div>
+  {{> searchFaculty}}
+</template>
+
+<template name="searchFaculty">
+  <div>
+    <select>
+      <option value="Engineering" ? ' selected="selected"'>Engineering </option>
+      <option value="Math" ? ' selected="selected"'>Math</option>
+      <option value="Arts" ? ' selected="selected"'>Arts</option>
+      <option value="Science" ? ' selected="selected"'>Science</option>
+    </select>
+    <input type="button" class="searchFaculty" value="Search">  
+  </div>
+</template>

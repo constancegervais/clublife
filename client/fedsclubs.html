@@ -4,85 +4,41 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
-    <!-- <link rel="stylesheet" href="fedsclubs.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css">   -->  
-    <!-- <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js" type="text/javascript"></script> -->
 </head>
 
-
-<!-- <body>
+<body>
   {{#if currentUser}}
-    {{> loggedIn}} 
+    {{> loggedIn}}
   {{else}}
     {{> loggedOut}}
   {{/if}}
 </body>
 
 <template name="loggedOut">
-  
-</template> -->
-
-<body>
-	{{loginButtons}}
-	<div class="profile_pic">
-        {{> profile_pic}}
-    </div>
-
-  {{> hello}}
-  {{> search}}
-  <br/></br>
-  {{> searchFaculty}}
-  <br/></br>
-  {{> match}}
-
-
-    <div id="calendar" style="width:600px;height:600px">
-  </div>
-
-</body>
-
-<template name="calendarDisplay">
-
+  {{#if partial 'home'}}
+    {{> userLogin}}
+  {{else}}{{#if partial 'clubLogin'}}
+    {{> clubLogin}}
+<!--All the club pages-->
+  {{else}}{{#if partial 'clubHome'}}
+    {{> clubHome}}
+  {{else}}{{#if partial 'createClub'}}
+    {{> createClub}}
+  {{else}}{{#if partial 'clubEvent'}}
+    {{> clubEvent}}
+  {{/if}}{{/if}}{{/if}}{{/if}}{{/if}}
 </template>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  <input type="button" value="Click" />
-</template>
- 
-<template name="fb_pic">
-	<p> Hello </>
-  <img src='{{pic}}'>
-</template>
-
-
-<template name="profile_pic">
-  <img src='{{profile_pic}}'>
+<template name="loggedIn">
+  {{#if partial 'home'}}
+    {{> userHome}}
+<!--All the User pages-->
+  {{else}}{{#if partial 'userSearch'}}
+    {{> userSearch}}
+  {{else}}{{#if partial 'match'}}
+    {{> match}}
+  {{else}}{{#if partial 'aboutUs'}}
+    {{> aboutUs}}
+  {{/if}}{{/if}}{{/if}}{{/if}}
 </template>
 
-<template name="searchFaculty">
-  <div>
-    <select>
-      <option value="Engineering" ? ' selected="selected"'>Engineering </option>
-      <option value="Math" ? ' selected="selected"'>Math</option>
-      <option value="Arts" ? ' selected="selected"'>Arts</option>
-      <option value="Science" ? ' selected="selected"'>Science</option>
-    </select>
-    <input type="button" class="searchFaculty" value="Search">  
-  </div>
-</template>
-
-<template name="search">
-  <div id="search-bar-container">
-    <input type="text" id="search" placeholder="Club Name">
-    <input type="button" class="search-bar" value="Search">
-  </div>
-</template>
-
-<template name="match">
-  <div id="search-bar-container">
-    <input type="button" id= "matchmaker" class="match-me" name ="2" value="Match"/>
-  </div>
-</template>
