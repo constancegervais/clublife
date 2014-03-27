@@ -30,15 +30,48 @@ Template.clubLogin.events({
 
 		Session.set('loggedInClub', club);
 
-		router.clubView(club.clubName);
+		router.clubHome(club.clubName);
 	},
 	'click .goto-create-club': function() {
-
+		router.createClub();
 	}
 });
 
 //# Create Club
 //=============
+Session.set('loggedInClub', null);
+
+Template.createClub.events({
+	'click .createClub': function(e) {
+		//Create Club to add to Collection
+		var club = $('#clubName').val();
+
+
+		Session.set('loggedInClub', club);
+
+		router.clubHome(club);	
+	}
+});
+
+//# Club Menu
+//===========
+Template.clubMenu.events({
+	'click .brand':function() {
+		var club = Session.get('loggedInClub');
+		router.clubHome(club.clubName);	
+	},
+	'click .event': function() {
+		var club = Session.get('loggedInClub');
+		router.events(club.clubName);
+	},
+	'click .members': function() {
+		var club = Session.get('loggedInClub');
+		router.members(club.clubName);
+	},
+	'click .logout': function(){
+		router.home();
+	}
+});
 
 //# Club Home
 //===========
@@ -184,7 +217,10 @@ var Router = Backbone.Router.extend({
 		'search': 'userSearch',
 		'match': 'userMatch',
 		'': 'home',
-		'aboutUs': 'aboutUs'
+		'aboutUs': 'aboutUs',
+		'createClub': 'createClub',
+		'event/:club': 'event',
+		'members/:club': 'members'
 	},
 
 	clubLoginView: function() {
@@ -192,7 +228,7 @@ var Router = Backbone.Router.extend({
 		this.navigate('store', true);
 	},
 
-	clubView: function(clubName) {
+	clubHome: function(clubName) {
 		var club = Session.get('loggedInClub');
 
 		if(!club){
@@ -223,6 +259,22 @@ var Router = Backbone.Router.extend({
 	aboutUs: function() {
 		Session.set('partial', 'aboutUs');
 		this.navigate('aboutUs', true);
+	},
+
+	createClub: function() {
+		Session.set('partial', 'createClub');
+		this.navigate('createClub', true);
+	},
+
+	events: function(clubName) {
+		Session.set('partial', 'clubEvent');
+		this.navigate('event/'+clubName, true);
+
+	},
+
+	members: function(clubName) {
+		Session.set('partial', 'clubMembers');
+		this.navigate('members/'+clubName, true);
 	}
 });
 

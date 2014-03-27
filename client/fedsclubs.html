@@ -26,7 +26,9 @@
     {{> createClub}}
   {{else}}{{#if partial 'clubEvent'}}
     {{> clubEvent}}
-  {{/if}}{{/if}}{{/if}}{{/if}}{{/if}}
+  {{else}}{{#if partial 'clubMembers'}}
+    {{> clubMembers}}
+  {{/if}}{{/if}}{{/if}}{{/if}}{{/if}}{{/if}}
 </template>
 
 <template name="loggedIn">
