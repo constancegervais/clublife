@@ -1,12 +1,177 @@
 <template name='createClub'>
-	<div class="input-group">
-  <input type="text" class="form-control" placeholder="ClubName" id='clubName'>
-	</div>
-	<div class="input-group">
-	  <input type="text" class="form-control" placeholder="Description">
-	</div>
-	<div class="input-group">
-	  <input type="text" class="form-control" placeholder="Tag">
-	</div>
-	<button type="button" class="createClub btn btn-default">Submit</button>
+
+	<form role="form">
+	  
+	  <div class="form-group">
+	    <label for="clubName">Club Name</label>
+	    <input type="text" class="form-control" id="clubName" placeholder="Club Name">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="clubPassword">Password</label>
+	    <input type="password" class="form-control" id="clubPassword" placeholder="Password">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="clubDesc">Club Description</label>
+	    <textarea class="form-control" rows="3" id="clubDesc"></textarea>
+<!-- 	    <input type="text" class="form-control" id="clubDesc" placeholder="Club Description"> -->
+	  </div>
+
+	  <div class="form-group">
+	    <label for="clubCat">Club Category</label>
+			<select class="form-control" id="clubCat">
+			  <option>Social</option>
+			  <option>Cultural</option>
+			  <option>Political</option>
+			  <option>Learning</option>
+			</select>
+	  </div>
+
+	  <div class="form-group">
+	  	<label for='clubTag'>Club Tag </br> Please seperate tag by using a comma</label>
+	  	<input type='text' class='form-control' id='clubTag' placeholder='Arts, Engineering, Science, etc.'>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="clubFaculty">Club Faculty</label>
+			<select class="form-control" id="clubFaculty">
+			  <option>None</option>
+			  <option>Science</option>
+			  <option>Arts</option>
+			  <option>Engineering</option>
+			  <option>Environment</option>
+			  <option>Applied Health Sciences</option>
+			</select>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="clubPic">Club Picture</label>
+	    <input type="file" id="clubPic">
+	    <p class="help-block">Attach Club Logo</p>
+	  </div>
+
+			Are the member in your club more
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="extraversion" id="extraversion" value="etrue">
+	        <ul>
+	          <li class='createTest'>Extraversion</li>
+	          <li class='createTest' >Talkative and sociable</li>
+	          <li class='createTest' >Expressive</li>
+	          <li class='createTest' >Comfortable around people</li>
+	          <li class='createTest' >Dislike being alone</li>
+	          <li >Get energized by communicating with others</li>
+	          <li class='createTest' >Think while speaking </li>
+	        </ul>
+		  </label>
+		</div>
+		<p>or</p>
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="extraversion" id="introversion" value="efalse">
+	        <ul>
+	          <li class='createTest' >Introversion</li>
+	          <li class='createTest' >Private</li>
+	          <li class='createTest' >Reserved</li>
+	          <li class='createTest' >Tire quickly in social settings</li>
+	          <li class='createTest' >Comfortable being alone</li>
+	          <li class='createTest' >Get energized by being alone</li>
+	          <li class='createTest' >Think before speaking</li>
+	        </ul>
+		  </label>
+		</div>
+
+		Are the members in your club more
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="sensing" id="sensing" value="strue">
+        <ul>
+          <li class='createTest'>Sensing</li>
+          <li class='createTest'>More interested in practical matter than ideas</li>
+          <li class='createTest'>Down-to-earth</li>
+          <li class='createTest'>More observant than imaginative</li>
+          <li class='createTest'>Focus on the past or the present</li>
+          <li class='createTest'>Notice the details, but might miss bigger picture</li>
+          <li class='createTest'>Trust Experience</li>
+        </ul>
+		  </label>
+		</div>
+		<p>or</p>
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="sensing" id="intuition" value="sfalse">
+	        <ul>
+          <li class='createTest'>Intuition</li>
+          <li class='createTest'>More interested in ideas than practical matters</li>
+          <li class='createTest'>Head in the clouds</li>
+          <li class='createTest'>More imaginative than observant</li>
+          <li class='createTest'>Focus on the future</li>
+          <li class='createTest'>See the bigger picture, but might miss details</li>
+          <li class='createTest'>Trust instinct</li>
+        </ul>
+		  </label>
+		</div>
+
+		Are the members in your club more
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="feeling" id="feeling" value="ftrue">
+        <ul>
+          <li class='createTest'>Feeling</li>
+          <li class='createTest'>Kind</li>
+          <li class='createTest'>Sensitive to criticism</li>
+          <li class='createTest'>Emotional reaction to conflicts</li>
+          <li class='createTest'>Want to be seen as warm and sensitive</li>
+          <li class='createTest'>Compassion above truth</li>
+        </ul>
+		  </label>
+		</div>
+		<p>or</p>
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="feeling" id="thinking" value="ffalse">
+	        <ul>
+          <li class='createTest'>Thinking</li>
+          <li class='createTest'>Though</li>
+          <li class='createTest'>Insensitive to criticism</li>
+          <li class='createTest'>Rational reaction to conflicts</li>
+          <li class='createTest'>Want to be seen as rational, calm and just</li>
+          <li class='createTest'>Truth about compassion</li>
+        </ul>
+		  </label>
+		</div>
+
+		Are the members in your club more
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="prospecting" id="prospecting" value="ptrue">
+        <ul>
+          <li class='createTest'>Prospecting</li>
+          <li class='createTest'>Focus on options</li>
+          <li class='createTest'>Do not mind unpredictability</li>
+          <li class='createTest'>Dislike long-term plans</li>
+          <li class='createTest'>Indecisive</li>
+          <li class='createTest'>Dislike rules</li>
+        </ul>
+		  </label>
+		</div>
+		<p>or</p>
+		<div class="radio">
+		  <label>
+		    <input type="radio" name="prospecting" id="judging" value="pfalse">
+	        <ul>
+          <li class='createTest'>Judging</li>
+          <li class='createTest'>Focus on schedules</li>
+          <li class='createTest'>Cannot stand unpredictability</li>
+          <li class='createTest'>Make long-term plans</li>
+          <li class='createTest'>Inflexible</li>
+          <li class='createTest'>Like Rules</li>
+        </ul>
+		  </label>
+		</div>
+
+	  
+	</form>
+	<button class="createClub btn btn-default">Submit</button>
 </template>

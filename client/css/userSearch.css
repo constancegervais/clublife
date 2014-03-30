@@ -1,0 +1,29 @@
+.searchResults{
+	text-align: center;
+	border: gray;
+}
+
+.name{
+	font-size: 20px;
+	color: black;
+	text-align: center;
+}
+
+.cat{
+	color:#1c1c1c;
+}
+
+.faculty{
+	color: #1c1c1c;
+
+}
+
+.desc-wrapper{
+	margin: 10px 30px 30px 30px;
+}
+
+.search-query{
+	width: 380px;
+	height: auto !important;
+	margin-left: 20px;
+}

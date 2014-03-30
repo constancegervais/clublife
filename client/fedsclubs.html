@@ -3,7 +3,8 @@
     <meta name="author" content="Constance Gervais, Eric Wong, Astor Wong & Anuja Chokshi">
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <!--<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>-->
 </head>
 
 <body>
@@ -28,7 +29,9 @@
     {{> clubEvent}}
   {{else}}{{#if partial 'clubMembers'}}
     {{> clubMembers}}
-  {{/if}}{{/if}}{{/if}}{{/if}}{{/if}}{{/if}}
+  {{else}}  {{#if partial 'eventCreated'}}
+    {{> eventCreated}}
+  {{/if}}{{/if}}{{/if}}{{/if}}{{/if}}{{/if}}{{/if}}
 </template>
 
 <template name="loggedIn">
@@ -36,11 +39,20 @@
     {{> userHome}}
 <!--All the User pages-->
   {{else}}{{#if partial 'userSearch'}}
-    {{> userSearch}}
+      {{> userSearch}}
+      {{> searchR}}
   {{else}}{{#if partial 'match'}}
     {{> match}}
   {{else}}{{#if partial 'aboutUs'}}
     {{> aboutUs}}
-  {{/if}}{{/if}}{{/if}}{{/if}}
+  {{else}} {{#if partial 'userClub'}}
+    {{> userClub}}
+  {{else}} {{#if partial 'joinedClub'}}
+    {{> joinedClub}}
+  {{/if}}{{/if}}{{/if}}{{/if}}{{/if}}{{/if}}
+</template>
+
+<template name="profile_pic">
+  <img src='{{profile_pic}}'>
 </template>
 

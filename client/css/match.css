@@ -1,0 +1,18 @@
+.personallity{
+	font-size: 20px;
+
+}
+
+li{
+	list-style: none;
+}
+
+.definition{
+
+}
+
+.matchBtn{
+	height: 200px;
+	width: 400px;
+	margin:30px;
+}

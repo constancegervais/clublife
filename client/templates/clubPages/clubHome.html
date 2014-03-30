@@ -1,5 +1,18 @@
 <template name="clubHome">
 	{{> clubMenu}}
-	Hello World Club!
+</br>
+
+	{{#each currentClub}}
+		<div>
+		Hello {{clubName}}!</br>
+	    <span class="cat">Category: {{clubCategory}}</span></br>
+	    <span class="faculty">Faculty: {{Faculty}}</span></br>
+		<span class="desc">Description: {{clubDescription}}</span></br>
+		</div>
+    {{/each}}
+
+	</br></br>
+	<div id="calendar" style="width:600px;height:600px">
+	</div>
 
 </template>

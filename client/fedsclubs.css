@@ -1,4 +1,9 @@
 /* CSS declarations go here */
+body {
+  font-family: 'Raleway' sans-serif;
+}
+
+/*Search Page*/
 #search-bar{
    position: absolute;
    width: 70%;

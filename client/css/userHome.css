@@ -1,0 +1,45 @@
+html {
+      display: block;
+      background: url(http://i198.photobucket.com/albums/aa318/TOR605_93/background-1.jpg); 
+      background-size: cover;
+      background-repeat: repeat-y;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+}  
+
+body {
+	background-color: transparent;
+}
+
+.home-wrapper
+{ 
+text-align: center;
+}
+
+.home-wrapper table
+{ 
+margin-left: auto;
+margin-right: auto;
+text-align: left;
+}
+
+  .tg th{
+font-family: "Raleway";
+font-size: 18px;
+font-weight: normal;
+padding: 10px 5px;
+border-style: solid;
+border-color: transparent;
+border-width: 20px;
+overflow: hidden;
+word-break: normal;
+height: 180px;
+display: table-cell;
+vertical-align: text-top;
+width: 500px;
+background: white;
+opacity: 0.6;
+border-radius: 70px;
+text-align: center;
+    }

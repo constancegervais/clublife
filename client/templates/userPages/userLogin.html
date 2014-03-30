@@ -1,9 +1,16 @@
 <template name="userLogin">
-	<div name="loginFunctions">
-		{{loginButtons}}
-		<p> OR</p>
-		<div class="goto-club-login">
-			<button type="button" class="btn btn-lg">Sign in as a Club</button>
+	<div class='login' >
+		<div class="loginFunctions">
+			<div id="login-button-wrapper">
+				{{loginButtons}}
+				<p></p>
+				<div id='or'>
+					 OR
+				</div>
+				<div class="goto-club-login">
+					<button type="button" class="btn btn-lg loginBtn" id="clubSignIn">Sign in as a Club</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>

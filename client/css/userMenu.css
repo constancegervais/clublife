@@ -1,0 +1,47 @@
+.navbar-inner {
+	background: black;
+	opacity: 0.5;
+	height: 54px !important;
+}
+
+.navbar .brand {
+	color: white;
+	font-size: 24px !important;
+}
+
+.navbar .nav > li > a{
+	color: white;
+	font-size: 15px;
+	text-shadow: none;
+}
+
+/*#login-buttons .login-buttons-with-only-one-button .login-button {
+display: inline-block;
+opacity: 1;
+text-align: right;
+background: black;
+text-align: center;
+padding: initial;
+border: none;
+font-size: 13px;
+}*/
+
+#login-buttons-logout{
+	background: none !important;
+	border: none !important;
+}
+#login-buttons .login-display-name {
+display: inline-block;
+padding-right: 5px;
+line-height: 1.5;
+font-family: 'Raleway';
+font-size: 15px;
+}
+
+/*.narbar .nav{
+	margin-top: 8px;
+}*/
+
+#menuBtn{
+	margin-top: 8px !important;
+}

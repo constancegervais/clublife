@@ -1,7 +1,162 @@
 <template name="match">
-	{{> userMenu}}
-  <div id="search-bar-container">
-    <input type="button" id= "matchmaker" class="match-me" name ="2" value="Match"/>
+  <!-- CREATE ORDER -->
+  <div class="order_wrapper wrapper" style="display: block">
+    {{> userMenu}}
+    <div class="match_process" id="match_one">
+      {{> extraversion}}
+    </div><!-- end test_one -->
+
+    <div class="match_process" id="match_two" style="display:none">
+      {{> sensing}}
+    </div><!-- end test_two -->
+
+    <div class="match_process" id="match_three" style="display:none">
+      {{> feeling}}
+    </div><!-- end test_three -->
+
+    <div class="match_process" id="match_four" style="display:none">
+      {{> prospecting}}
+    </div><!-- end test_four --> 
+
+    <div class="match_process" id="match_results" style="display:none">
+      {{> matchResults}}
+    </div><!-- end test_five -->  
+  
   </div>
-  Match
+</template>
+
+<template name="extraversion">
+  <div id='matchFirstPage'>
+    <p> Get Matched to a Club! 
+    <p>Pick the one that best suit you:
+  </div>
+  <div class='text-center'>
+    <div class="btn-group">
+      <button type="button" class="extraversion matchBtn btn btn-default">
+        <ul>
+          <li class='personallity'>Extraversion</li>
+          <li class='definition'>Talkative and sociable</li>
+          <li class='definition'>Expressive</li>
+          <li class='definition'>Comfortable around people</li>
+          <li class='definition'>Dislike being alone</li>
+          <li class='definition'>Get energized by communicating with others</li>
+          <li class='definition'>Think while speaking </li>
+        </ul>
+      </button>
+      <button type="button" class="introversion matchBtn btn btn-default">
+        <ul>
+          <li class='personallity'>Introversion</li>
+          <li class='definition'>Private</li>
+          <li class='definition'>Reserved</li>
+          <li class='definition'>Tire quickly in social settings</li>
+          <li class='definition'>Comfortable being alone</li>
+          <li class='definition'>Get energized by being alone</li>
+          <li class='definition'>Think before speaking</li>
+        </ul>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template name="sensing">
+  <div id='matchFirstPage'> 
+    <p>Pick the one that best suit you:
+  </div>
+  <div class='text-center'>
+    <div class="btn-group">
+      <button type="button" class="sensing matchBtn btn btn-default">
+        <ul>
+          <li class='personallity'>Sensing</li>
+          <li class='definition'>More interested in practical matter than ideas</li>
+          <li class='definition'>Down-to-earth</li>
+          <li class='definition'>More observant than imaginative</li>
+          <li class='definition'>Focus on the past or the present</li>
+          <li class='definition'>Notice the details, but might miss bigger picture</li>
+          <li class='definition'>Trust Experience</li>
+        </ul>
+      </button>
+      <button type="button" class="intuition matchBtn btn btn-default">
+          <li class='personallity'>Intuition</li>
+          <li class='definition'>More interested in ideas than practical matters</li>
+          <li class='definition'>Head in the clouds</li>
+          <li class='definition'>More imaginative than observant</li>
+          <li class='definition'>Focus on the future</li>
+          <li class='definition'>See the bigger picture, but might miss details</li>
+          <li class='definition'>Trust instinct</li>
+        </ul>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template name="feeling">
+  <div id='matchFirstPage'> 
+    <p>Pick the one that best suit you:
+  </div>
+  <div class='text-center'>
+    <div class="btn-group">
+      <button type="button" class="feeling matchBtn btn btn-default">
+        <ul>
+          <li class='personallity'>Feeling</li>
+          <li class='definition'>Kind</li>
+          <li class='definition'>Sensitive to criticism</li>
+          <li class='definition'>Emotional reaction to conflicts</li>
+          <li class='definition'>Want to be seen as warm and sensitive</li>
+          <li class='definition'>Compassion above truth</li>
+        </ul>
+      </button>
+      <button type="button" class="thinking matchBtn btn btn-default">
+          <li class='personallity'>Thinking</li>
+          <li class='definition'>Though</li>
+          <li class='definition'>Insensitive to criticism</li>
+          <li class='definition'>Rational reaction to conflicts</li>
+          <li class='definition'>Want to be seen as rational, calm and just</li>
+          <li class='definition'>Truth about compassion</li>
+        </ul>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template name="prospecting">
+  <div id='matchFirstPage'> 
+    <p>Pick the one that best suit you:
+  </div>
+  <div class='text-center'>
+    <div class="btn-group">
+      <button type="button" class="prospecting matchBtn btn btn-default">
+        <ul>
+          <li class='personallity'>Prospecting</li>
+          <li class='definition'>Focus on options</li>
+          <li class='definition'>Do not mind unpredictability</li>
+          <li class='definition'>Dislike long-term plans</li>
+          <li class='definition'>Indecisive</li>
+          <li class='definition'>Dislike rules</li>
+        </ul>
+      </button>
+      <button type="button" class="judging matchBtn btn btn-default">
+          <li class='personallity'>Judging</li>
+          <li class='definition'>Focus on schedules</li>
+          <li class='definition'>Cannot stand unpredictability</li>
+          <li class='definition'>Make long-term plans</li>
+          <li class='definition'>Inflexible</li>
+          <li class='definition'>Like Rules</li>
+        </ul>
+      </button>
+    </div>
+  </div>
+</template>
+
+<template name="matchResults">
+  <p> You've been perfectly matched to the following clubs! </p>
+    {{#each perfMatching}}
+    </br></br></br>
+    <div>
+    <!-- <img src="perfectCrown.png"> -->
+    <a class="name" id="selectedMatchClub" value="{{_id}}">{{clubName}}</a></br>
+    <span class="desc">Description: {{clubDescription}}</span></br>
+    <span class="cat">Category: {{clubCategory}}</span></br>
+    <span class="faculty">Faculty: {{Faculty}}</span></br>
+    </div>
+  {{/each}}
 </template>

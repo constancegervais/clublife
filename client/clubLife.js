@@ -30,7 +30,7 @@ Template.clubLogin.events({
 
 		Session.set('loggedInClub', club);
 
-		router.clubHome(club.clubName);
+		router.gotoClubHome(club.clubName);
 	},
 	'click .goto-create-club': function() {
 		router.createClub();
@@ -42,14 +42,29 @@ Template.clubLogin.events({
 Session.set('loggedInClub', null);
 
 Template.createClub.events({
+
 	'click .createClub': function(e) {
-		//Create Club to add to Collection
-		var club = $('#clubName').val();
+		var club = {
+			createdAt: (new Date()),
+	        clubName: $('#clubName').val(),
+	        members: [],
+	        events:[],
+	        clubDescription: $('#clubDesc').val(),
+	        clubCategory: $('#clubCat').val(),
+	        clubTag: $('#clubTag').val().split(','),
+	        Faculty: $('#clubFaculty').val(),
+	        logo: $('clubPic').val(),
+			PersonalityTest: [
+				$('input[name="extraversion"]:checked').val(),
+				$('input[name="Sensing"]:checked').val(),
+				$('input[name="feeling"]:checked').val(),
+				$('input[name="prospecting"]:checked').val()
+			]
+		};
 
-
+		FedsClubs.insert(club);
 		Session.set('loggedInClub', club);
-
-		router.clubHome(club);	
+		router.gotoClubHome(club.clubName);	
 	}
 });
 
@@ -58,7 +73,7 @@ Template.createClub.events({
 Template.clubMenu.events({
 	'click .brand':function() {
 		var club = Session.get('loggedInClub');
-		router.clubHome(club.clubName);	
+		router.gotoClubHome(club.clubName);	
 	},
 	'click .event': function() {
 		var club = Session.get('loggedInClub');
@@ -75,12 +90,64 @@ Template.clubMenu.events({
 
 //# Club Home
 //===========
+Template.clubHome.currentClub = function () {
+	var club = Session.get('loggedInClub');
+    return FedsClubs.find({
+    	clubName: club.clubName
+    });
+};
+
+$(document).on('click', '#clubLoginBtn, #clubHomePage, #createEvent', function() {
+setTimeout(function(){
+		var currentClub = Session.get('loggedInClub');
+		var cEvents =  currentClub.events;
+		debugger;
+	   	var calendar = $("#calendar").fullCalendar({
+	        header: {
+	          left: 'prev,next today',
+	          center: 'title',
+	          right: 'month,agendaWeek,agendaDay'
+	        },
+	        editable: true,
+	        events: cEvents
+	      });
+}, 10);
+});
+
 
 //# Club Create Event
 //===================
+Template.clubEvent.rendered = function() {
+	 $(function() {
+	 	$( "#datepicker" ).datepicker();
+	 });
+};
 
-//# CLub Memebers
+Template.clubEvent.events({
+	'click .createEvent':function(){
+		var currentClub = Session.get('loggedInClub');
+		var cEvent = {
+			title: $('#eventName').val(),
+			start: $('#datepicker').val(),
+			url: $('#eURL').val()
+		}; 
+
+    	FedsClubs.update(currentClub._id, {$addToSet: {events: cEvent}});
+
+		router.gotoClubHome(currentClub.clubName);
+	}
+});
+
+//# Club Memebers
 //===============
+Template.clubMembers.members = function () {
+	var club = Session.get('loggedInClub');
+
+    var clubCursor = FedsClubs.findOne({
+    	clubName: club.clubName
+    });
+    return clubCursor.members;
+};
 
 //# Logged In
 //===========
@@ -95,6 +162,9 @@ Template.loggedIn.helpers({
 //=========
 
 Template.userMenu.events({
+	'click .brand':function() {
+		router.home();
+	},
 	'click .search': function() {
 		router.userSearch();
 	},
@@ -117,94 +187,131 @@ Template.userMenu.events({
 
 //# User Search
 //=============
-Template.userSearch.events = {
-  'click input.search-bar': function () {
-        //Have to figure out how to avoid empty searches.
-    var searchQuery = document.getElementById("search").value;
-    if (searchQuery && searchQuery !== " "){
-      var cursor = FedsClubs.find({ $or: [{clubTag: { $all: [searchQuery]}}, 
-        { clubCategory: searchQuery }, 
-        { clubDescription: new RegExp(searchQuery) },
-        { clubName: new RegExp(searchQuery)} ]});
-      console.log((cursor.fetch()));
-    }
-    else
-    {
-      console.log("Please enter a query.");
-    }
-  }
-}
 
-Template.searchFaculty.events = {
-  'click input.searchFaculty': function() {
-    //Get output from form.
-    var searchF = "Science";
-    var cursor = FedsClubs.find({ Faculty: searchF });
-    console.log((cursor.fetch()));
-  } 
-    //DO SOMETHING WITH searchQuery here.
-}
+//For some reason, this is showing up even when not called. :/
+Template.searchR.searchResults = function () {
+    var keyword = Session.get("search-query");
+    var query = new RegExp( keyword, 'i' );
+    return FedsClubs.find({ $or: [{clubTag: { $all: [query]}}, 
+        { clubCategory: query }, 
+        { clubDescription: query },
+        { clubName: query }, 
+        { Faculty: query } ]});
+ };
+
+Template.userSearch.events({
+    'keyup input.search-query': function (evt) {
+          Session.set("search-query", evt.currentTarget.value);
+    },
+    'submit form':function(evt,template){
+    event.preventDefault();
+    Session.set("searchQuery",template.find(".search-query").value);
+    }
+});
+
+Template.searchR.events({
+	'click .name': function(e){
+    	var selectedClub = this._id;
+
+    	Session.set('selectedClub', this);
+    	router.gotoUserClub(selectedClub);
+    } 
+});
 //# User Match
 //============
-Template.match.events = {
-  'click input.match-me': function () {
+
+Template.matchResults.perfMatching = function () {
     //THIS WILL BE INPUT FROM THE USER.
-    var extraversion;
-    var sensing;
-    var feeling;
-    var prospecting;
+    extraversion = Session.get("extraversion");
+    sensing = Session.get("sensing");
+    feeling = Session.get("feeling");
+    prospecting = Session.get("prospecting");
 
-    if(true)
-    {
-      extraversion = "etrue";
-      sensing = "strue";
-      feeling = "ftrue";
-      prospecting = "ptrue";
-    }
+    //var perfectClubMatch 
+    return (FedsClubs.find({$and: [{"PersonalityTest" : extraversion}, {"PersonalityTest" : sensing}, 
+      {"PersonalityTest" : feeling}, {"PersonalityTest" : prospecting}]}));
+};
 
-    var perfectClubMatch = FedsClubs.find({$and: [{"PersonalityTest" : extraversion}, {"PersonalityTest" : sensing}, 
-      {"PersonalityTest" : feeling}, {"PersonalityTest" : prospecting}]});
+Template.matchResults.events({
+	'click .name': function(e){
+    	var selectedClub = this._id;
 
-    var similarClubMatch = FedsClubs.find({$or: [{$and: [{"PersonalityTest" : {$ne: extraversion}}, 
-      {"PersonalityTest" : {$ne: sensing}}, {"PersonalityTest" : {$ne: feeling}}, {"PersonalityTest" : {$ne: prospecting}}]}, 
-      {$or: [{"PersonalityTest" : extraversion}, {"PersonalityTest" : sensing}, 
-      {"PersonalityTest" : feeling}, {"PersonalityTest" : prospecting}]}]});
-
-
-    //WHEN OUTPUTTING TO HTML, MAKE SURE THAT IT WILL FILTER OUT DUPLICATES WHEN
-    //MAKING THE RESULTS OBJECTS. CURRENTLY, WILL HAVE DUPLICATES. :/
-    
-    if (perfectClubMatch.count() > 0)
-    {
-      console.log("Perfect Match!");
-      console.log(perfectClubMatch.fetch());
-
-      if(similarClubMatch.count() > 0)
-      {
-        console.log("Similar Matches!");
-        console.log(similarClubMatch.fetch());
-      }
-    }
-    else if (similarClubMatch.count() > 0)
-    {
-      console.log("Similar Matches!");
-      console.log(similarClubMatch.fetch());
-    }
-    else
-    {
-      console.log("No matches. :(")
-    }
-  }
-}
+    	Session.set('selectedClub', this);
+    	router.gotoUserClub(selectedClub);
+    } 
+});
 
 //# View Club Information
 //=======================
+Template.userClub.club = function(){
+	var club = Session.get('selectedClub');
+	return FedsClubs.find({
+		_id: club._id
+	});
+};
+
+Template.userClub.events({
+	'click .joinClub': function(){
+		var selectedClub = Session.get('selectedClub');
+		var user = Meteor.user();
+		var member = [{
+			mID: user._id,
+			mName: user.profile.name,
+			mPic: user.profile.picture
+		}];
+
+		FedsClubs.update(selectedClub._id, {$addToSet: {members: member}});
+		router.gotoJoinClub();
+	}
+});
+
+Template.joinedClub.clubJoined = function(){
+	var club = Session.get('selectedClub');
+	return FedsClubs.find({
+		_id: club._id
+	});
+};
+
+Template.joinedClub.memberJoined = function()
+{
+	if (Meteor.user()) {
+		var name = Meteor.user().profile.name;
+
+		if (!name) return '';
+		return name;
+	}
+};
+
+$(document).on('click', '#selectedClubName, #selectedMatchClub', function() {
+setTimeout(function(){
+		var currentClub = Session.get('selectedClub');
+		var cEvents =  currentClub.events;
+	   	var calendar = $("#clubCalendar").fullCalendar({
+	        header: {
+	          left: 'prev,next today',
+	          center: 'title',
+	          right: 'month,agendaWeek,agendaDay'
+	        },
+	        editable: true,
+	        events: cEvents
+	      });
+}, 10);
+});
 
 //# About Us
 //==========
 
 //# User Profile
 //==============
+Template.profile_pic.profile_pic = function() {
+	if (Meteor.user()) {
+		var picture = Meteor.user().profile.picture;
+
+		if (!picture) return '';
+		return picture;
+	}
+};
+
 
 
 //# Router 
@@ -213,14 +320,23 @@ Template.match.events = {
 var Router = Backbone.Router.extend({
 	routes: {
 		'club': 'clubLoginView',
-		'club/:club': 'clubHome',
+		'club/:club': 'gotoClubHome',
 		'search': 'userSearch',
 		'match': 'userMatch',
 		'': 'home',
 		'aboutUs': 'aboutUs',
 		'createClub': 'createClub',
 		'event/:club': 'event',
-		'members/:club': 'members'
+		'members/:club': 'members',
+		'match': 'match',
+    	'match/one': 'matchOne',
+    	'match/two': 'matchTwo',
+    	'match/three': 'matchThree',
+    	'match/four': 'matchFour',
+    	'match/results': 'matchResults',
+    	'userClub/:clubId': 'gotoUserClub',
+    	'joinedClub': 'gotoJoinClub',
+    	'eventCreated': 'gotoEventCreated'
 	},
 
 	clubLoginView: function() {
@@ -228,13 +344,8 @@ var Router = Backbone.Router.extend({
 		this.navigate('store', true);
 	},
 
-	clubHome: function(clubName) {
-		var club = Session.get('loggedInClub');
-
-		if(!club){
-			this.home();
-			return;
-		}
+	gotoClubHome: function(clubName) {
+		// var club = Session.get('loggedInClub');
 
 		Session.set('partial', 'clubHome');
 
@@ -248,8 +359,70 @@ var Router = Backbone.Router.extend({
 
 	userMatch: function() {
 		Session.set('partial', 'match');
-		this.navigate('match', true);
+		this.matchOne();
 	},
+
+	matchOne: function(){
+		Session.set('partial', 'match');
+
+  		$("#match_one").addClass("active");
+  		router.navigate('match/one', true);
+			$("#match_one").fadeIn();
+
+			$("#match_two, #match_three, #match_four, #match_results").hide();
+  	},
+
+	matchTwo: function(){
+		Session.set('partial', 'match');
+
+  		$("#match_two").addClass("active");
+			$("#match_one").fadeOut( function() {
+				$(this).removeClass("active");
+				router.navigate('match/two', true);
+			$("#match_two").fadeIn();
+			});
+
+		$("#match_three, #match_four, #match_results").hide();
+  	},
+
+	matchThree: function(){
+		Session.set('partial', 'match');
+
+  		$("#match_three").addClass("active");
+			$("#match_two").fadeOut( function() {
+				$(this).removeClass("active");
+				router.navigate('match/three', true);
+			$("#match_three").fadeIn();
+			});
+
+		$("#match_one, #match_four, #match_results").hide();
+  	},
+
+	matchFour: function(){
+		Session.set('partial', 'match');
+
+  		$("#match_four").addClass("active");
+			$("#match_three").fadeOut( function() {
+				$(this).removeClass("active");
+				router.navigate('match/four', true);
+			$("#match_four").fadeIn();
+			});
+
+		$("#match_one, #match_two, #match_results").hide();
+  	},
+
+	matchResults: function(){
+		Session.set('partial', 'match');
+
+  		$("#match_results").addClass("active");
+			$("#match_four").fadeOut( function() {
+				$(this).removeClass("active");
+				router.navigate('match/results', true);
+			$("#match_results").fadeIn();
+			});
+
+		$("#match_one, #match_two, #match_three").hide();
+  	},
 
 	home: function() {
 		Session.set('partial', 'home');
@@ -275,7 +448,23 @@ var Router = Backbone.Router.extend({
 	members: function(clubName) {
 		Session.set('partial', 'clubMembers');
 		this.navigate('members/'+clubName, true);
-	}
+	},
+
+	gotoUserClub: function(clubId){
+		Session.set('partial', 'userClub');
+		this.navigate("userClub/"+clubId, true);
+
+	},
+
+	gotoJoinClub: function(){
+		Session.set('partial', 'joinedClub');
+		this.navigate('joinedClub', true);
+
+	},
+	// gotoEventCreated: function(club){
+	// 	Session.set('partial', 'eventCreated');
+	// 	this.navigate('eventCreated', true);
+	// }
 });
 
 router = new Router;

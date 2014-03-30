@@ -1,20 +1,25 @@
 <template name="userSearch">
-  {{> userMenu}}
-  <div id="search-bar-container">
-    <input type="text" id="search" placeholder="Club Name">
-    <input type="button" class="search-bar" value="Search">
-  </div>
-  {{> searchFaculty}}
+      {{> userMenu}}
+    <div>
+      <form class="navbar-search pull-left">
+        <input type="text" class="search-query" placeholder="Filter clubs to find your perfect match!" style="font-size: 18px; font-family:'Raleway'">
+      </form>
+    </div>
 </template>
 
-<template name="searchFaculty">
+<template name="searchR">
+  <div class='home'>
   <div>
-    <select>
-      <option value="Engineering" ? ' selected="selected"'>Engineering </option>
-      <option value="Math" ? ' selected="selected"'>Math</option>
-      <option value="Arts" ? ' selected="selected"'>Arts</option>
-      <option value="Science" ? ' selected="selected"'>Science</option>
-    </select>
-    <input type="button" class="searchFaculty" value="Search">  
+    {{#each searchResults}}
+      </br></br></br>
+      <div class='searchResults'>
+        <a class="name" id="selectedClubName" value="{{_id}}"><b>{{clubName}}</b></a></br>
+        <span class="cat">Category: {{clubCategory}}</span></br>
+        <span class="faculty">Faculty: {{Faculty}}</span>
+        <div class="desc-wrapper">
+        <span class="desc">{{clubDescription}}</span></br></div>
+      </div>
+    {{/each}}
   </div>
+</div>
 </template>

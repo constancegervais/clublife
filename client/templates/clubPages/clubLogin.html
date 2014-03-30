@@ -1,13 +1,18 @@
 <template name='clubLogin'>
-	<div class="login_input">
-    	<input id="club_username" type="text" placeholder="username">
-    	<p></p>
-    	<input type="password" placeholder="password">
-    	<p></p>
-    	<input type="submit" class="goto-club-view" value="login">
-   </div>
-   <p>OR</p>
-   	<div class="goto-create-club">
-			<button type="button" class="btn btn-lg">Create Club</button>
-		</div>
+  <div class='login'>
+    <div class='loginFunctions' id='clubLoginFunctions'>
+      <div class="login_input">
+        <p>Club Username</p>
+        <input class='input' id="club_username" type="text" placeholder="username">
+        <p>Password</p>
+        <input id="password" type="password" placeholder="password">
+        <button type="button" id="clubLoginBtn"class="goto-club-view" value="login">Login</button>
+      </div>
+      <p></p>
+      <p></p>
+      <div class="goto-create-club">
+        <button class='createClubLogin' id="clubCreateBtn"type="button" class="btn btn-lg">Create Club</button>
+      </div>
+    </div>
+  </div>
 </template>

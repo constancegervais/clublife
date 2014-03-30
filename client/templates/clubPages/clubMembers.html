@@ -1,5 +1,10 @@
 <template name='clubMembers'>
 	{{> clubMenu}}
-	Constance
-	Anuja
+</br>
+Members
+</br>
+{{#each members}}
+	<img src='{{this.mPic}}'>
+	{{this.mName}}
+{{/each}} 
 </template>

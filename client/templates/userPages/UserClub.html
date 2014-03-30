@@ -1,0 +1,29 @@
+<template name='userClub'>
+	{{> userMenu}}
+
+	{{#each club}}
+		<div>
+		Welcome to the {{clubName}} page!</br>
+	    <span class="cat">Category: {{clubCategory}}</span></br>
+	    <span class="faculty">Faculty: {{Faculty}}</span></br>
+		<span class="desc">Description: {{clubDescription}}</span></br>
+		</div>
+    {{/each}}
+
+    <button type="button" class="joinClub btn btn-default">Join?</button>
+</br></br>
+	<div id="clubCalendar" style="width:600px;height:600px">
+	</div>
+</template>
+
+<template name='joinedClub'>
+	{{> userMenu}}
+
+	</br>
+
+	<div class="profile_pic">
+        {{> profile_pic}}
+    </div>
+	Congragulation {{currentUser.profile.name}} ! You have successfully joined {{#each clubJoined}}{{clubName}}{{/each}}.
+
+</template>

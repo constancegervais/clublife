@@ -1,0 +1,3 @@
+(function(){Template.__define__("userMenu",Package.handlebars.Handlebars.json_ast_to_func(["<div class=\"navbar navbar-default navbar-static-top\">\n\t\t<div class=\"navbar-inner\">\n\t    <a class=\"brand\">ClubLife</a>\n\t    <ul class=\"nav\">\n\t    \t<li><a class=\"search\">Search</a></li>\n\t    \t<li><a class=\"match\">Match</a></li>\n\t    \t<li><a class=\"userHome\">Why Join?</a></li>\n\t    \t<li><a class=\"aboutUs\">About Us</a></li>\n\t    </ul>\n\t    <ul class=\"nav pull-right\">\n        <li><a class=\"logout\">",["{",[[0,"loginButtons"]]],"</a></li>\n\t    </div>\n\t</div>"]));
+
+})();

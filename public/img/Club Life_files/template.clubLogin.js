@@ -1,0 +1,3 @@
+(function(){Template.__define__("clubLogin",Package.handlebars.Handlebars.json_ast_to_func(["<div class='login'>\n    <div class='loginFunctions' id='clubLoginFunctions'>\n      <div class=\"login_input\">\n        <p>Club Username</p>\n        <input class='input' id=\"club_username\" type=\"text\" placeholder=\"username\">\n        <p>Password</p>\n        <input id=\"password\" type=\"password\" placeholder=\"password\">\n        <input type=\"submit\" class=\"goto-club-view\" value=\"login\">\n      </div>\n      <p></p>\n      <div class=\"goto-create-club\">\n        <button type=\"button\" class=\"btn btn-lg\">Create Club</button>\n      </div>\n    </div>\n  </div>"]));
+
+})();
