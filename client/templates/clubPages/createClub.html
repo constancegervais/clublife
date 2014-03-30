@@ -1,41 +1,54 @@
 <template name='createClub'>
 
-	<form role="form">
+	<form role="form" class='createClubForm'>
 	  
 	  <div class="form-group">
-	    <label for="clubName">Club Name</label>
-	    <input type="text" class="form-control" id="clubName" placeholder="Club Name">
+	    <label for="clubName" class='col-sm-3 control-label'>Club Name</label>
+	    <div class='col-sm-9'>
+	    	<input type="text" class="form-control" id="clubName" placeholder="Club Name">
+		</div>
 	  </div>
 
 	  <div class="form-group">
-	    <label for="clubPassword">Password</label>
-	    <input type="password" class="form-control" id="clubPassword" placeholder="Password">
+	    <label for="clubPassword" class='col-sm-3 control-label'>Password</label>
+	    <div class='col-sm-9'>
+	    	<input type="password" class="form-control" id="clubPassword" placeholder="Password">
+	    </div>
 	  </div>
 
-	  <div class="form-group">
-	    <label for="clubDesc">Club Description</label>
-	    <textarea class="form-control" rows="3" id="clubDesc"></textarea>
-<!-- 	    <input type="text" class="form-control" id="clubDesc" placeholder="Club Description"> -->
-	  </div>
 
 	  <div class="form-group">
-	    <label for="clubCat">Club Category</label>
-			<select class="form-control" id="clubCat">
+	    <label for="clubDesc" class='col-sm-3 control-label'>Club Description</label>
+	    <div class='col-sm-9'>
+	    	<textarea class="form-control" rows="3" id="clubDesc" style="margin-bottom:10px"></textarea>
+		</div>
+
+	  </div>
+	</br></br>
+
+	  <div class="form-group">
+	    <label for="clubCat" class='col-sm-3 control-label'>Club Category</label>
+	    <div class='col-sm-9'>
+			<select class="form-control" id="clubCat" style="margin-bottom:10px">
 			  <option>Social</option>
 			  <option>Cultural</option>
 			  <option>Political</option>
 			  <option>Learning</option>
 			</select>
+		</div>
+	  </div>
+</br></br>
+	  <div class="form-group">
+	  	<label for='clubTag' class='col-sm-3 control-label'>Club Tag</label>
+	  	<div class='col-sm-9'>
+	  		<input type='text' class='form-control' id='clubTag' placeholder='Please seperate tag by using a comma' style="margin-bottom:10px">
+	  	</div>
 	  </div>
 
 	  <div class="form-group">
-	  	<label for='clubTag'>Club Tag </br> Please seperate tag by using a comma</label>
-	  	<input type='text' class='form-control' id='clubTag' placeholder='Arts, Engineering, Science, etc.'>
-	  </div>
-
-	  <div class="form-group">
-	    <label for="clubFaculty">Club Faculty</label>
-			<select class="form-control" id="clubFaculty">
+	    <label for="clubFaculty" class='col-sm-3 control-label'>Club Faculty</label>
+	    <div class='col-sm-9'>
+			<select class="form-control" id="clubFaculty" style="margin-bottom:10px">
 			  <option>None</option>
 			  <option>Science</option>
 			  <option>Arts</option>
@@ -43,16 +56,17 @@
 			  <option>Environment</option>
 			  <option>Applied Health Sciences</option>
 			</select>
+		</div>
 	  </div>
 
-	  <div class="form-group">
+<!-- 	  <div class="form-group">
 	    <label for="clubPic">Club Picture</label>
 	    <input type="file" id="clubPic">
 	    <p class="help-block">Attach Club Logo</p>
-	  </div>
-
+	  </div> -->
+<div class="row">
 			Are the member in your club more
-		<div class="radio">
+		<div class="radio" class="col-sm-6">
 		  <label>
 		    <input type="radio" name="extraversion" id="extraversion" value="etrue">
 	        <ul>
@@ -67,7 +81,7 @@
 		  </label>
 		</div>
 		<p>or</p>
-		<div class="radio">
+		<div class="radio" class='col-sm-6'>
 		  <label>
 		    <input type="radio" name="extraversion" id="introversion" value="efalse">
 	        <ul>
@@ -81,6 +95,7 @@
 	        </ul>
 		  </label>
 		</div>
+	</div>
 
 		Are the members in your club more
 		<div class="radio">

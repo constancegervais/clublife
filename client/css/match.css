@@ -16,3 +16,11 @@ li{
 	width: 400px;
 	margin:30px;
 }
+
+#matches-wrapper{
+	margin: 0px 30px;
+}
+
+.matches{
+	margin: 0px	10%;
+}

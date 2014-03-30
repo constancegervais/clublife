@@ -101,7 +101,7 @@ $(document).on('click', '#clubLoginBtn, #clubHomePage, #createEvent', function()
 setTimeout(function(){
 		var currentClub = Session.get('loggedInClub');
 		var cEvents =  currentClub.events;
-		debugger;
+
 	   	var calendar = $("#calendar").fullCalendar({
 	        header: {
 	          left: 'prev,next today',
@@ -210,7 +210,7 @@ Template.userSearch.events({
 });
 
 Template.searchR.events({
-	'click .name': function(e){
+	'click .searchResults': function(e){
     	var selectedClub = this._id;
 
     	Session.set('selectedClub', this);
@@ -233,7 +233,7 @@ Template.matchResults.perfMatching = function () {
 };
 
 Template.matchResults.events({
-	'click .name': function(e){
+	'click .matches': function(e){
     	var selectedClub = this._id;
 
     	Session.set('selectedClub', this);
@@ -282,9 +282,11 @@ Template.joinedClub.memberJoined = function()
 	}
 };
 
-$(document).on('click', '#selectedClubName, #selectedMatchClub', function() {
-setTimeout(function(){
+$(document).on('click', '.searchResults, .matches', function() {
+setTimeout(function(e){
+
 		var currentClub = Session.get('selectedClub');
+
 		var cEvents =  currentClub.events;
 	   	var calendar = $("#clubCalendar").fullCalendar({
 	        header: {

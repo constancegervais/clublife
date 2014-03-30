@@ -1,0 +1,34 @@
+#welcome{
+	font-size: 25px;
+}
+
+.info{
+	font-size: 20px;
+}
+
+.joinClub{
+	margin: 20px;
+	background: white;
+	font-size: 20px;
+	position: absolute;
+	right: 0;
+}
+
+.joined-profile .profile_pic{
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+	margin: 0px auto;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: -15px;
+}
+
+.congrats{
+	font-size: 20px;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.91);
+}

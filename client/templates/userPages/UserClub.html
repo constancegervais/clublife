@@ -1,18 +1,17 @@
 <template name='userClub'>
 	{{> userMenu}}
-
+	 <button type="button" class="joinClub btn btn-default">Join?</button>
 	{{#each club}}
-		<div>
-		Welcome to the {{clubName}} page!</br>
-	    <span class="cat">Category: {{clubCategory}}</span></br>
-	    <span class="faculty">Faculty: {{Faculty}}</span></br>
-		<span class="desc">Description: {{clubDescription}}</span></br>
+		<div class='center-block' style="margin: 10%">
+		<span id='welcome'>Welcome to the {{clubName}} page!</span></br>
+	    <span class="info">Category: {{clubCategory}}</span></br>
+	    <span class="info">Faculty: {{Faculty}}</span></br>
+		<span class="info">{{clubDescription}}</span></br>
 		</div>
     {{/each}}
 
-    <button type="button" class="joinClub btn btn-default">Join?</button>
 </br></br>
-	<div id="clubCalendar" style="width:600px;height:600px">
+	<div id="clubCalendar" style="margin: 60px; background: rgba(255, 255, 255, 0.79); padding: 15px;">
 	</div>
 </template>
 
@@ -20,10 +19,15 @@
 	{{> userMenu}}
 
 	</br>
-
-	<div class="profile_pic">
-        {{> profile_pic}}
-    </div>
-	Congragulation {{currentUser.profile.name}} ! You have successfully joined {{#each clubJoined}}{{clubName}}{{/each}}.
-
+	<div class='joined-profile'>
+		<span class='congrats'>
+		Congratulations! </span></br></br>
+		<div class="profile_pic">
+	        {{> profile_pic}}
+	    </div>
+		</br></br>
+	    <span class='congrats'>
+		{{currentUser.profile.name}} you have successfully joined {{#each clubJoined}}{{clubName}}{{/each}}.
+		</span>
+	</div>
 </template>

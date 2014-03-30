@@ -148,15 +148,15 @@
 </template>
 
 <template name="matchResults">
-  <p> You've been perfectly matched to the following clubs! </p>
+  <p> You've been perfectly matched to the following clubs! </p></br>
+  <ul>
     {{#each perfMatching}}
-    </br></br></br>
-    <div>
-    <!-- <img src="perfectCrown.png"> -->
-    <a class="name" id="selectedMatchClub" value="{{_id}}">{{clubName}}</a></br>
-    <span class="desc">Description: {{clubDescription}}</span></br>
-    <span class="cat">Category: {{clubCategory}}</span></br>
-    <span class="faculty">Faculty: {{Faculty}}</span></br>
-    </div>
-  {{/each}}
+      <li class='matches' style='cursor:pointer'>
+        <span class="name" id="selectedMatchClub" value="{{_id}}">{{clubName}}</span></br>
+        <span class="cat">Category: {{clubCategory}}</span></br>
+        <span class="faculty">Faculty: {{Faculty}}</span></br>
+        <span class="desc">Description: {{clubDescription}}</span></br>
+        </br></br>
+    {{/each}}
+  </ul>
 </template>
