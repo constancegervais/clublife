@@ -1,10 +1,15 @@
 <template name='clubMembers'>
 	{{> clubMenu}}
 </br>
-Members
+<h1>Members</h1>
 </br>
 {{#each members}}
+<div class='member-wrapper'>
+<div class='memPic'>
 	<img src='{{this.mPic}}'>
-	{{this.mName}}
+</div>
+<span style='font-size:20px'>
+	{{this.mName}}</span>
+</div>
 {{/each}} 
 </template>

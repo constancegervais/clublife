@@ -37,3 +37,22 @@
 .center-block{
 	margin: 5px 60px 0px 60px !important;
 }
+
+.memPic{
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	margin: 0px auto;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: -15px;
+	border-color: transparent;
+}
+
+.member-wrapper{
+	text-align: left;
+	margin-left: 50px;
+}

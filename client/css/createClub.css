@@ -42,3 +42,7 @@ span.input-group-addon{
 	border-right-style: solid !important;
 	border-right-width: 1px !important;
 }
+
+.ui-datepicker{
+	background-color: white;
+}
