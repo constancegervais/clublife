@@ -1,5 +1,6 @@
 <template name='createClub'>
-
+<div class='form-wrapper'>
+	<h2>Create a Club </h2>
 	<form role="form" class='createClubForm'>
 	  
 	  <div class="form-group">
@@ -64,13 +65,16 @@
 	    <input type="file" id="clubPic">
 	    <p class="help-block">Attach Club Logo</p>
 	  </div> -->
-<div class="row">
-			Are the member in your club more
-		<div class="radio" class="col-sm-6">
-		  <label>
-		    <input type="radio" name="extraversion" id="extraversion" value="etrue">
-	        <ul>
-	          <li class='createTest'>Extraversion</li>
+</br></br>
+<h4>Are the member in your club more</h4>
+	<div class="row">
+
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="extraversion" id="extraversion" value="etrue">
+	      </span>
+	      <ul>
 	          <li class='createTest' >Talkative and sociable</li>
 	          <li class='createTest' >Expressive</li>
 	          <li class='createTest' >Comfortable around people</li>
@@ -78,14 +82,15 @@
 	          <li >Get energized by communicating with others</li>
 	          <li class='createTest' >Think while speaking </li>
 	        </ul>
-		  </label>
-		</div>
-		<p>or</p>
-		<div class="radio" class='col-sm-6'>
-		  <label>
-		    <input type="radio" name="extraversion" id="introversion" value="efalse">
-	        <ul>
-	          <li class='createTest' >Introversion</li>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="extraversion" id="introversion" value="efalse">
+	      </span>
+	      <ul>
 	          <li class='createTest' >Private</li>
 	          <li class='createTest' >Reserved</li>
 	          <li class='createTest' >Tire quickly in social settings</li>
@@ -93,16 +98,19 @@
 	          <li class='createTest' >Get energized by being alone</li>
 	          <li class='createTest' >Think before speaking</li>
 	        </ul>
-		  </label>
-		</div>
-	</div>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+</br>
+<h4>Are the member in your club more</h4>
+	<div class="row">
 
-		Are the members in your club more
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="sensing" id="sensing" value="strue">
-        <ul>
-          <li class='createTest'>Sensing</li>
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="sensing" id="sensing" value="strue">
+	      </span>
+	      <ul>
           <li class='createTest'>More interested in practical matter than ideas</li>
           <li class='createTest'>Down-to-earth</li>
           <li class='createTest'>More observant than imaginative</li>
@@ -110,14 +118,15 @@
           <li class='createTest'>Notice the details, but might miss bigger picture</li>
           <li class='createTest'>Trust Experience</li>
         </ul>
-		  </label>
-		</div>
-		<p>or</p>
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="sensing" id="intuition" value="sfalse">
-	        <ul>
-          <li class='createTest'>Intuition</li>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	  
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="sensing" id="intuition" value="sfalse">
+	      </span>
+	      <ul>
           <li class='createTest'>More interested in ideas than practical matters</li>
           <li class='createTest'>Head in the clouds</li>
           <li class='createTest'>More imaginative than observant</li>
@@ -125,68 +134,80 @@
           <li class='createTest'>See the bigger picture, but might miss details</li>
           <li class='createTest'>Trust instinct</li>
         </ul>
-		  </label>
-		</div>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+</br>
+	<h4>Are the member in your club more</h4>
+	<div class="row">
 
-		Are the members in your club more
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="feeling" id="feeling" value="ftrue">
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="feeling" id="feeling" value="ftrue">
+	      </span>
         <ul>
-          <li class='createTest'>Feeling</li>
           <li class='createTest'>Kind</li>
           <li class='createTest'>Sensitive to criticism</li>
           <li class='createTest'>Emotional reaction to conflicts</li>
           <li class='createTest'>Want to be seen as warm and sensitive</li>
           <li class='createTest'>Compassion above truth</li>
         </ul>
-		  </label>
-		</div>
-		<p>or</p>
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="feeling" id="thinking" value="ffalse">
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	  
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="feeling" id="thinking" value="ffalse">
+	      </span>
 	        <ul>
-          <li class='createTest'>Thinking</li>
-          <li class='createTest'>Though</li>
+          <li class='createTest'>Tough</li>
           <li class='createTest'>Insensitive to criticism</li>
           <li class='createTest'>Rational reaction to conflicts</li>
           <li class='createTest'>Want to be seen as rational, calm and just</li>
           <li class='createTest'>Truth about compassion</li>
         </ul>
-		  </label>
-		</div>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+	  </br>
+	<h4>Are the member in your club more</h4>
+	<div class="row">
 
-		Are the members in your club more
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="prospecting" id="prospecting" value="ptrue">
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="prospecting" id="prospecting" value="ptrue">
+	      </span>
         <ul>
-          <li class='createTest'>Prospecting</li>
           <li class='createTest'>Focus on options</li>
           <li class='createTest'>Do not mind unpredictability</li>
           <li class='createTest'>Dislike long-term plans</li>
           <li class='createTest'>Indecisive</li>
           <li class='createTest'>Dislike rules</li>
         </ul>
-		  </label>
-		</div>
-		<p>or</p>
-		<div class="radio">
-		  <label>
-		    <input type="radio" name="prospecting" id="judging" value="pfalse">
-	        <ul>
-          <li class='createTest'>Judging</li>
+
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	  
+	  <div class="col-sm-6">
+	    <div class="input-group">
+	      <span class="input-group-addon">
+	        <input type="radio" name="prospecting" id="judging" value="pfalse">
+	      </span>
+		<ul>
           <li class='createTest'>Focus on schedules</li>
           <li class='createTest'>Cannot stand unpredictability</li>
           <li class='createTest'>Make long-term plans</li>
           <li class='createTest'>Inflexible</li>
           <li class='createTest'>Like Rules</li>
         </ul>
-		  </label>
-		</div>
-
-	  
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
 	</form>
-	<button class="createClub btn btn-default">Submit</button>
+	<button class="createClub btn btn-default" style="font-size:20px">Submit</button>
+
+</div>
 </template>

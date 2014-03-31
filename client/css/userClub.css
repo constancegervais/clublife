@@ -8,6 +8,7 @@
 
 .joinClub{
 	margin: 20px;
+	margin-right: 60px !important;
 	background: white;
 	font-size: 20px;
 	position: absolute;
@@ -31,4 +32,8 @@
 	font-size: 20px;
 	text-align: center;
 	color: rgba(0, 0, 0, 0.91);
+}
+
+.center-block{
+	margin: 5px 60px 0px 60px !important;
 }

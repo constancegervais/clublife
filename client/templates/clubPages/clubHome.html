@@ -3,16 +3,17 @@
 </br>
 
 	{{#each currentClub}}
-		<div>
-		Hello {{clubName}}!</br>
-	    <span class="cat">Category: {{clubCategory}}</span></br>
-	    <span class="faculty">Faculty: {{Faculty}}</span></br>
-		<span class="desc">Description: {{clubDescription}}</span></br>
+		<div class='center-block' style="margin: 10%">
+		<span id='welcome'>Hello {{clubName}}!</span></br>
+	    <span class="info">Category: {{clubCategory}}</span></br>
+	    <span class="info">Faculty: {{Faculty}}</span></br>
+		<span class="info">{{clubDescription}}</span></br>
 		</div>
+		<div>
     {{/each}}
 
 	</br></br>
-	<div id="calendar" style="width:600px;height:600px">
+	<div id="calendar" style="margin: 0px 60px 60px 60px; background: rgba(255, 255, 255, 0.79); padding: 4px 15px 5px 15px;">
 	</div>
 
 </template>
