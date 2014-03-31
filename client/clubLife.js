@@ -257,11 +257,11 @@ Template.userClub.events({
 	'click .joinClub': function(){
 		var selectedClub = Session.get('selectedClub');
 		var user = Meteor.user();
-		var member = [{
+		var member = {
 			mID: user._id,
 			mName: user.profile.name,
 			mPic: user.profile.picture
-		}];
+		};
 
 		FedsClubs.update(selectedClub._id, {$addToSet: {members: member}});
 		router.gotoJoinClub();
