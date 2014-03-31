@@ -100,7 +100,11 @@ Template.clubHome.currentClub = function () {
 $(document).on('click', '#clubLoginBtn, #clubHomePage, #createEvent, .createClub', function() {
 setTimeout(function(){
 		var currentClub = Session.get('loggedInClub');
-		var cEvents =  currentClub.events;
+		var updatedClub = FedsClubs.findOne({
+    	clubName: currentClub.clubName
+    	});
+		var cEvents =  updatedClub.events;
+		debugger;
 
 	   	var calendar = $("#calendar").fullCalendar({
 	        header: {
@@ -126,7 +130,7 @@ Template.clubEvent.rendered = function() {
 Template.clubEvent.events({
 
 	'click .createEvent':function(){
-
+debugger;
 		var currentClub = Session.get('loggedInClub');
 		var cEvent = {
 			title: $('#eventName').val(),
@@ -136,8 +140,7 @@ Template.clubEvent.events({
 
     	FedsClubs.update(currentClub._id, {$addToSet: {events: cEvent}});
 
-    	Session.set('lo')
-		router.gotoClubHome(currentClub.clubName);
+    	router.gotoClubHome(currentClub.clubName);
 	}
 });
 
@@ -160,6 +163,10 @@ Template.loggedIn.helpers({
 		return Session.get('partial') === partialName;
 	}
 });
+
+//# User Friends
+//==============
+
 
 //# User Nav Bar
 //=========

@@ -37,6 +37,7 @@ if (Meteor.isServer) {
 
     Accounts.onLogin(function(options, user) {
         if(options.profile){
+            console.log("on login");
 
             var friendUsers = new Array();
 
