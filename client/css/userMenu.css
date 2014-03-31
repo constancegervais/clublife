@@ -46,3 +46,8 @@ font-size: 15px;
 #menuBtn{
 	margin-top: 8px !important;
 }
+
+.navbar-default{
+	background-color: black;
+	opacity: 0.5;
+}
