@@ -97,7 +97,7 @@ Template.clubHome.currentClub = function () {
     });
 };
 
-$(document).on('click', '#clubLoginBtn, #clubHomePage, #createEvent', function() {
+$(document).on('click', '#clubLoginBtn, #clubHomePage, #createEvent, .createClub', function() {
 setTimeout(function(){
 		var currentClub = Session.get('loggedInClub');
 		var cEvents =  currentClub.events;
@@ -124,7 +124,9 @@ Template.clubEvent.rendered = function() {
 };
 
 Template.clubEvent.events({
+
 	'click .createEvent':function(){
+
 		var currentClub = Session.get('loggedInClub');
 		var cEvent = {
 			title: $('#eventName').val(),
@@ -134,6 +136,7 @@ Template.clubEvent.events({
 
     	FedsClubs.update(currentClub._id, {$addToSet: {events: cEvent}});
 
+    	Session.set('lo')
 		router.gotoClubHome(currentClub.clubName);
 	}
 });
